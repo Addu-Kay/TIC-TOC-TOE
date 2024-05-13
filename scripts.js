@@ -26,12 +26,9 @@ const winConditions = [
 ];
 
 // audios
-const plyerOneWins = new Audio();
-const plyer2Wins = new Audio();
-const bruh = new Audio();
-plyerOneWins.src = "../Audio/player1.mp3";
-plyer2Wins.src = "../Audio/player2.mp3";
-bruh.src = "../Audio/Bruh sound effect (320).mp3";
+const plyerOneWins = new Audio("./Audio/player1.mp3");
+const plyer2Wins = new Audio("./Audio/player2.mp3");
+const bruh = new Audio("./Audio/Bruh sound effect (320).mp3");
 
 // position of playe1 and player2 which they clicked
 let player1Positions = [],
@@ -56,6 +53,9 @@ function putSymbol(e) {
   const boxClicked = document.getElementById(id);
   animateBox(boxClicked);
 
+  //play sound
+  new Audio("./Audio/ting.mp3").play();
+
   // variable to store symbol X or O
   let symbol;
 
@@ -73,7 +73,6 @@ function putSymbol(e) {
     bruh.play();
   } else if (isPlayer1Playing && player1Positions.length >= 3) {
     result(player1Positions);
-    console.log(player1Positions);
   } else if (player2Positions.length >= 3) {
     result(player2Positions);
   }
@@ -102,16 +101,10 @@ function result(playerPositions) {
 // animate
 function animateBox(element) {
   element.classList.add("clicked");
-  setInterval(() => {
+  element.classList.remove("hoverable");
+  let timeInterval = setInterval(() => {
     element.classList.remove("clicked");
-  }, 400);
-
-   if (isPlayer1Playing) {
-     element.classList.add("player1");
-   } else {
-     element.classList.add("player2");
-   }
-
-  
- 
+    // element.classList.add(isPlayer1Playing ? "player1" : "player2");
+    clearInterval(timeInterval);
+  }, 100);
 }
