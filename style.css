@@ -58,4 +58,20 @@ h1 {
 
 .box.hoverable:hover {
     background-color: #7469B6;
+    cursor: pointer;
+}
+
+button {
+    height: 100px;
+    width: 200px;
+    background-color: hsl(276, 35%, 80%);
+    border-radius: 20px;
+    border: 1px solid #E1AFD1;
+    color: #FFE6E6;
+    font-size: 40px;
+}
+
+button:hover{
+    background-color: #E1AFD1;
+    cursor: pointer;
 }

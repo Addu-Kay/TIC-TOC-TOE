@@ -69,7 +69,8 @@ function putSymbol(e) {
   boxClicked.removeEventListener("click", putSymbol);
 
   if (player1Positions.length == 5 && player2Positions.length == 4) {
-    document.body.innerHTML = "<h1>DRAW!!</h1>";
+    document.body.innerHTML =
+      "<h1>DRAW!!</h1> <button onClick='restart()'>PLAY AGAIN</button>";
     bruh.play();
   } else if (isPlayer1Playing && player1Positions.length >= 3) {
     result(player1Positions);
@@ -89,10 +90,12 @@ function result(playerPositions) {
 
     const trueCount = boolean.filter((element) => element == true);
     if (isPlayer1Playing && trueCount.length == 3) {
-      document.body.innerHTML = "<h1>PLAYER 1 WON !!</h1>";
+      document.body.innerHTML =
+        "<h1>PLAYER 1 WON !!</h1><button onClick='restart()'>PLAY AGAIN</button>";
       plyerOneWins.play();
     } else if (trueCount.length == 3) {
-      document.body.innerHTML = "<h1>PLAYER 2 WON !!</h1>";
+      document.body.innerHTML =
+        "<h1>PLAYER 2 WON !!</h1> <button onClick='restart()'>PLAY AGAIN</button>";
       plyer2Wins.play();
     }
   });
@@ -107,4 +110,9 @@ function animateBox(element) {
     // element.classList.add(isPlayer1Playing ? "player1" : "player2");
     clearInterval(timeInterval);
   }, 100);
+}
+
+// reload game.html
+function restart() {
+  window.location.reload();
 }
